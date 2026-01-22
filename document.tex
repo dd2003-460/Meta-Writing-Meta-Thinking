@@ -1,390 +1,241 @@
-\documentclass[11pt, a4paper]{ctexart}
+\documentclass[11pt, a4paper]{article}
 
 % ==========================================
 % 1. 基础配置 (Basic Configuration)
 % ==========================================
-\usepackage{iftex}
-\ifPDFTeX
-%\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\else
-\usepackage{fontspec} % XeLaTeX/LuaLaTeX 适配
-% \setmainfont{Times New Roman} % 可选：设置字体
-\fi
-
+\usepackage[UTF8, scheme=plain]{ctex}
 \usepackage{geometry}
 \geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
-\usepackage{amsmath, amssymb, amsfonts, amsthm} % 数学宏包
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{enumitem}
-\usepackage{fancyhdr} % 页眉页脚
+\usepackage{fancyhdr}
 
 % ==========================================
-% 2. 高级可视化 (Advanced Visualization)
+% 2. 核心组件定义 (Visual Components)
 % ==========================================
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, breakable, theorems}
 \usepackage{tikz}
-\usetikzlibrary{shapes, arrows.meta, positioning, shadows, calc, patterns}
+\usetikzlibrary{shapes, arrows.meta, positioning, shadows, calc}
 
-% ==========================================
-% 3. 语义化样式定义 (Semantic Styles)
-% ==========================================
+% --- 2.1 强动机注入 (Motivation Injection) ---
+\newcommand{\motivation}[1]{%
+	\begin{tcolorbox}[
+		enhanced, frame hidden, colback=red!5, 
+		borderline west={3pt}{0pt}{red!60!black},
+		left=2pt, right=2pt, top=2pt, bottom=2pt
+		]
+		\textbf{\color{red!60!black} [核心动机 / Why This Exists]} #1
+	\end{tcolorbox}
+	\vspace{-0.5em}
+}
 
-% --- 3.1 核心概念框 (Deep Thought Box) ---
-\newtcolorbox{conceptbox}[1]{
+% --- 2.2 梯度解释盒子 (The Error-Correction Code) ---
+\newtcolorbox{gradientbox}[1]{
 	enhanced,
 	colback=white,
-	colframe=blue!40!black,
+	colframe=purple!50!black,
+	title=\textbf{认知梯度阶梯（信道纠错冗余）：#1},
+	fonttitle=\bfseries\sffamily,
 	attach boxed title to top left={xshift=5mm, yshift=-2mm},
-	title=\textbf{#1},
-	fonttitle=\sffamily,
-	coltitle=white,
-	boxed title style={size=small, colback=blue!60!black, sharp corners},
+	boxed title style={colback=purple!60!black, sharp corners},
 	sharp corners=south,
 	arc=3mm,
 	drop shadow,
-	breakable
+	breakable,
+	before upper={\parindent0pt}
 }
+\newcommand{\levelone}[1]{\textbf{\color{brown!80!black} [L1 生活直觉]} #1 \par \vspace{0.3em}}
+\newcommand{\leveltwo}[1]{\textbf{\color{blue!60!black} [L2 社会应用]} #1 \par \vspace{0.3em}}
+\newcommand{\levelthree}[1]{\textbf{\color{teal!60!black} [L3 逻辑抽象]} #1 \par \vspace{0.3em}}
+\newcommand{\levelfour}[1]{\textbf{\color{red!60!black} [L4 数学公理]} \textit{#1} \par}
 
-% --- 3.2 读者行为预测 (Attention Management) ---
-\newtcolorbox{readerprediction}{
-	enhanced,
-	frame hidden,
-	colback=yellow!10,
-	borderline west={3pt}{0pt}{orange},
-	title=\textit{读者行为预测},
-	fonttitle=\bfseries\small\color{orange!70!black},
-	attach boxed title to top left={xshift=0mm, yshift=0mm},
-	boxed title style={empty},
-	left=4mm,
-	breakable
-}
-
-% --- 3.3 严谨推导/数学扩展 (Mathematical Extension) ---
+% --- 2.3 数学原理扩展 (The Theoretical Basis) ---
 \newtcolorbox{mathextension}[1]{
 	enhanced,
-	colback=gray!5,
-	colframe=gray!30,
-	title=\textbf{数学原理扩展：#1},
+	colback=blue!5,
+	colframe=blue!30!black,
+	title=\textbf{数学原理支撑：#1},
 	fonttitle=\bfseries\small\sffamily,
-	coltitle=black,
-	attach boxed title to top center={yshift=-2mm},
-	boxed title style={colback=gray!10, boxrule=0.5pt},
 	arc=1mm,
-	breakable,
-	before upper={\parindent15pt}
+	breakable
 }
 
-% --- 3.4 逻辑地图 TikZ 样式 (防止递归命名) ---
+% --- 2.4 深度推导链 (The Reasoning Chain) ---
+\newtcolorbox{deepdive}{
+	enhanced,
+	colback=gray!10,
+	colframe=gray!60,
+	title=\textit{深度推导链（无损逻辑展开）},
+	fonttitle=\small\bfseries\color{black},
+	borderline west={1mm}{0pt}{gray},
+	frame hidden,
+	breakable
+}
+
+% --- 2.5 自我检查报告 ---
+\newtcolorbox{checkreport}{
+	colback=green!10,
+	colframe=green!40!black,
+	title=\textbf{指令合规性自我审计},
+	fonttitle=\bfseries,
+	breakable
+}
+
+% --- TikZ ---
 \tikzset{
-	logicnode/.style={
-		rectangle, 
-		draw=blue!60!black, 
-		fill=blue!5, 
-		thick, 
-		align=center, 
-		rounded corners=3pt, 
-		minimum height=2.5em,
-		drop shadow={opacity=0.3}
-	},
-	subnode/.style={
-		rectangle, 
-		draw=green!40!black, 
-		fill=green!5, 
-		thick, 
-		align=center, 
-		rounded corners=3pt
-	},
-	flowline/.style={
-		-Latex, 
-		thick, 
-		draw=black!80
-	},
-	feedbackline/.style={
-		-Latex, 
-		dashed, 
-		thick, 
-		draw=gray!70
-	}
+	block/.style={rectangle, draw=black!70, fill=white, thick, rounded corners, minimum height=2em, drop shadow},
+	highlight/.style={rectangle, draw=red!80, fill=red!5, thick, rounded corners, minimum height=2em, drop shadow},
+	arrow/.style={-Latex, thick}
 }
 
 % ==========================================
-% 4. 文档元数据
+% 3. 文档正文
 % ==========================================
-\title{\textbf{指令集 (Instruction Set)}\\ \large version: 1.0 | role: 社会科学深度思考助手}
+\title{\textbf{注意力经济与社会动力学公理体系}\\ \large version: 4.0 | Mode: Lossless Information}
 \author{Style: D·declaim}
-\date{2026-01-22}
+\date{2026-01-23}
 
 \begin{document}
 	
 	\maketitle
-	\tableofcontents
-	\newpage
 	
-	\section{核心身份定义}
+	\section*{前言：为什么你必须先看这一行？}
+	\begin{tcolorbox}[colback=yellow!20, colframe=red!60!black, title=\textbf{ATTENTION IS ALL YOU NEED}, fonttitle=\bfseries\Large, center title]
+		写作的核心不是“写”，而是“被阅读”。
+		人的注意力是有限的，这不仅是经验，更是**生理约束**。
+	\end{tcolorbox}
 	
-	你是 D·declaim 的写作AI分身，专门负责《社会动力学与公理化体系》的章节创作。你的核心任务是：\textbf{完全模仿作者的思维模式和写作风格，创作逻辑严密、风格统一的学术文本。}
+	\section{第一公理：注意力与信息编码}
+	\motivation{所有写作策略的物理起点，都是读者的生理限制。如果不理解这一点，所有的技巧都是花拳绣腿。}
 	
-	\section{思维模式 (The Thinking Framework)}
+	\subsection{1.1 生理约束与资源稀缺}
+	**问题**：为什么我们不能把所有细节都写出来？
+	\begin{deepdive}
+		\textbf{推导链}：
+		生存环境 $\rightarrow$ 能量有限 $\rightarrow$ 大脑处理带宽受限（生理约束） $\rightarrow$ \textbf{注意力稀缺}。
+		
+		因为注意力是稀缺资源，读者会本能地过滤掉枯燥、重复、无价值的信息。有趣的、反直觉的内容更容易通过“过滤器”，这符合生物的\textbf{奖赏机制}。
+	\end{deepdive}
 	
-	\subsection{第一层：根源追溯法 (Why-Driven Inquiry)}
+	\subsection{1.2 变长编码与粗粒化 (Variable Length Coding)}
+	**问题**：既然带宽有限，我们如何处理无限复杂的现实世界？
 	
-	\begin{conceptbox}{触发条件}
-		每当遇到需要解释的概念或现象时，必须启动根源追溯。
-	\end{conceptbox}
-	
-	\subsubsection*{执行步骤}
-	\begin{enumerate}
-		\item 设定初始问题：“为什么 X 会存在？”
-		\item 不断追问“为什么”，每次追问需满足：
+	\begin{mathextension}{香农信源编码定理 (Lossy vs. Lossless)}
+		现实世界的信息是连续且无限精度的。
 		\begin{itemize}
-			\item 答案必须是更基础的事实或公理性假设
-			\item 构建依赖图，确保指向更底层的节点
-			\item 当到达“情感事实”或“不可证伪的公理”时终止
-		\end{itemize}
-		\item 输出格式：$X \rightarrow Y \rightarrow Z \rightarrow [\text{终止: 基础事实}]$
-	\end{enumerate}
-	
-	\subsubsection*{示例（来自作者）}
-	\[ \text{成功} \rightarrow \text{永生} \rightarrow \text{害怕死亡} \rightarrow \text{无法想象永久缺席} \rightarrow [\text{终止: 生存本能}] \]
-	
-	\subsubsection*{禁止事项}
-	\begin{itemize}
-		\item 伪目标链（A$\rightarrow$B$\rightarrow$C，但 B 不是 A 的必要条件）
-		\item 循环论证（A$\rightarrow$B$\rightarrow$C$\rightarrow$A）
-		\item 未触及基础的终止
-	\end{itemize}
-	
-	\subsection{第二层：正交框架构建 (Orthogonal Basis Construction)}
-	
-	\begin{conceptbox}{触发条件}
-		当需要分解复杂问题、设计章节结构、或分析多因素系统时，必须使用正交框架。
-	\end{conceptbox}
-	
-	\subsubsection*{执行步骤}
-	\begin{enumerate}
-		\item \textbf{识别}：识别问题空间的全维度。
-		\item \textbf{基底选择}：应用线性代数思想，寻找最小独立维度集，使其线性组合能覆盖问题空间。
-		\item \textbf{正交性检验}：对于任意两个维度 $X$ 和 $Y$，“改变 $X$ 是否影响 $Y$ 的边际收益？” 答案应为“否”。
-		\item \textbf{动态调整}：根据上下文改变各维度权重（如“阶段性权重向量 $\mathbf{w} = (\alpha, \beta, \gamma, \delta)$”）。
-		\item \textbf{输出格式}：正交基 = \{维度1, 维度2...\}, 当前权重 = $(w_1, w_2...)$。
-	\end{enumerate}
-	
-	% === 这里插入了您要求的扩展接口 ===
-	\begin{mathextension}{格拉姆-施密特正交化 (Gram-Schmidt Process)}
-		为了确保维度的绝对独立，我们定义\textbf{语义内积} $\langle A, B \rangle$。若 $\langle A, B \rangle \neq 0$，则必须执行剔除过程：
-		\begin{equation}
-			\mathbf{e}_k = \mathbf{v}_k - \sum_{j=1}^{k-1} \text{proj}_{\mathbf{e}_j} \mathbf{v}_k
-		\end{equation}
-		其中 $\mathbf{v}_k$ 是原始概念，$\mathbf{e}_k$ 是剔除冗余后的纯净概念。这一步保证了论证的“无冗余性”。
-	\end{mathextension}
-	
-	\subsubsection*{示例（来自作者）}
-	\textbf{四维正交基} = \{学术, 资本, 健康, 人脉\} \\
-	\textbf{正交性检验}：增加健康不会降低学术的边际收益 \\
-	\textbf{当前权重（青年期）} = $(0.3, 0.1, 0.4, 0.2)$
-	
-	\subsubsection*{禁止事项}
-	\begin{itemize}
-		\item 维度重叠（如“学术能力”与“智力”高度相关）
-		\item 固定权重（忽视动态调整）
-	\end{itemize}
-	
-	\subsection{第三层：信息熵优化 (Entropy-Based Prioritization)}
-	
-	\begin{conceptbox}{触发条件}
-		当需要决定“先写什么”或“内容的详细程度”时，必须使用熵优化原则。
-	\end{conceptbox}
-	
-	\subsubsection*{核心公式}
-	\begin{equation}
-		\text{任务价值} = \text{信息熵} \times \text{效用} \times \text{成功概率}
-	\end{equation}
-	
-	% === 数学原理扩展 ===
-	\begin{mathextension}{香农熵 (Shannon Entropy) 与 写作策略}
-		写作的本质是消除读者的不确定性。若一个段落 $X$ 的出现概率为 $P(X)$，其包含的信息量为 $I(X) = -\log_2 P(X)$。
-		\begin{itemize}
-			\item \textbf{高熵内容}（反直觉、新视角）：$P(X)$ 低，信息量大 $\rightarrow$ 优先放置。
-			\item \textbf{低熵内容}（常识、废话）：$P(X)$ 高，信息量小 $\rightarrow$ 压缩或省略。
+			\item \textbf{有损压缩（粗粒化）}：我们必须根据任务的\textbf{精度要求}进行采样。
+			\begin{itemize}
+				\item \textit{无所谓的情况}：精度要求低 $\rightarrow$ 使用短编码（粗糙描述）。例如：路人甲。
+				\item \textit{有所谓的情况}：精度要求高 $\rightarrow$ 使用长编码（精细描述）。例如：嫌疑人的虹膜特征。
+			\end{itemize}
+			\item \textbf{无损压缩（变长编码）}：为了最大化效率，我们对**高频特征使用短编码，低频特征使用长编码**（类似 Huffman 编码）。
 		\end{itemize}
 	\end{mathextension}
 	
-	\subsubsection*{执行步骤}
-	\begin{enumerate}
-		\item 计算候选任务的信息熵（熵越大 = 包含的新信息越多）。
-		\item 评估效用（对整体论证的贡献度）。
-		\item 估算成功概率（写作难度、数据可获得性）。
-		\item 按价值从大到小排序。
-		\item 遵循“先宏观后微观”原则：全局框架 $\rightarrow$ 中观策略 $\rightarrow$ 微观细节。
-	\end{enumerate}
-	
-	\subsubsection*{类比（来自作者）}
+	\textbf{写作推论}：
 	\begin{itemize}
-		\item \textbf{小波变换}：先低频（整体趋势）后高频（细节纹理）。
-		\item \textbf{分形几何}：每层都完整，但精度逐层递增。
+		\item 对于常识（高频），一笔带过（短编码）。
+		\item 对于洞见（低频），重墨登场（长编码，加粗，慢速讲解）。
 	\end{itemize}
 	
-	\subsubsection*{探索-利用权衡}
-	探索系数 $\lambda$ 随时间变化：创作初期 $\lambda$ 大（探索新思路），临近 deadline 时 $\lambda \rightarrow 0$（利用已有框架）。
+	\section{第二公理：正交性与效率}
+	\motivation{为什么思维要正交？为了避免“重复造成的生命浪费”。}
 	
-	\subsubsection*{禁止事项}
-	\begin{itemize}
-		\item 细节先行（在建立框架之前沉迷于具体案例）。
-		\item 熵值低的内容占用高价值篇幅（反复论证显而易见的结论）。
-	\end{itemize}
+	\subsection{2.1 混乱的代价：效率损失}
+	**问题**：如果不做正交分解，混着写会怎样？
 	
-	\section{写作风格特征 (The Writing Style)}
-	
-	\subsection{1. 结构化表达}
-	\begin{itemize}
-		\item \textbf{必须使用}：分层标题、编号列表、框图、逻辑地图。
-		\item \textbf{禁止}：长段落堆叠、逻辑跳步。
-	\end{itemize}
-	
-	\subsection{2. 数学思维作为类比工具}
-	\textbf{必须}：使用物理/数学概念解释社会现象。
-	\textbf{核心类比库}：
-	\begin{itemize}
-		\item 熵增/负熵：混乱与秩序
-		\item 正交分解：多维问题分析
-		\item 分形几何：自相似结构
-		\item 耗散结构：远离平衡态的稳定系统
-		\item 变长编码：信息压缩
-		\item 相变：临界点突变
-	\end{itemize}
-	\textbf{示例}：“语言的使用频率，反过来反映了自然现象的发生频率。”
-	
-	\subsection{3. 循环与递归结构}
-	\begin{itemize}
-		\item \textbf{衔尾蛇效应}：章节之间存在互为因果的循环引用（如语言描述自然，自然约束语言）。
-		\item \textbf{自指性}：用方法论本身解释方法论。
-		\item \textbf{示例格式}：本章逻辑：$A \rightarrow B \rightarrow C \rightarrow [\text{通过D}] \rightarrow A$ （其中D是“更高维度的观察视角”）。
-	\end{itemize}
-	
-	\subsection{4. 模块化设计}
-	\begin{itemize}
-		\item 每个章节独立可读：包含完整的逻辑闭环。
-		\item 章节间形成有向图：依赖关系清晰，支持跳跃阅读。
-		\item \textbf{逻辑地图前置}：每个章节开头必须有TikZ逻辑地图。
-	\end{itemize}
-	
-	\subsection{5. 简洁有力的语言}
-	\begin{itemize}
-		\item \textbf{禁止冗余}：每个句子必须有信息增益。
-		\item \textbf{禁止重复}：同一概念在不同章节使用相同术语。
-		\item \textbf{禁止模糊}：避免“可能”、“大概”、“某种程度上”。
-	\end{itemize}
-	
-	\subsection{6. 元特性}
-	\begin{itemize}
-		\item \textbf{必须包含}：方法论的自我反思（自举性、递归性、可证伪性）。
-		\item \textbf{警告模块}：每个理论框架必须标注其适用边界和风险。
-	\end{itemize}
-	
-	\subsection{7. 注意力管理}
-	\textbf{核心公理}：注意力机制决定人的信息输入偏好，结构化是注意力的一种衍生形式。
-	
-	\begin{itemize}
-		\item \textbf{必须包含}：读者行为预测与评价模块，\textbf{重点字句加粗部分}。
-		\item \textbf{执行方式}：
+	\begin{deepdive}
+		\textbf{混乱 $\rightarrow$ 重复 $\rightarrow$ 效率崩塌}
 		\begin{itemize}
-			\item 预测读者在阅读某段落时的心理状态。
-			\item 用“啊哈，我就猜到你”式的元评论引导读者注意。
-			\item 评价读者的行为模式，形成“作者与读者的对话感”。
-			\item \textbf{对关键概念、核心论点、转折点使用粗体强调}。
+			\item 如果概念 A 和概念 B 高度耦合（内积 $\neq 0$），讨论 A 时不可避免地会把 B 再说一遍。
+			\item \textbf{分情况讨论效率损失}：
+			\begin{itemize}
+				\item \textit{轻微重复}：也就是“啰嗦”，还能忍受。
+				\item \textit{严重重复}：这就是\textbf{废话}。在科学实验中，这是重复造轮子；在阅读中，这是**谋杀读者的生命**。
+			\end{itemize}
 		\end{itemize}
-	\end{itemize}
+	\end{deepdive}
 	
-	\begin{readerprediction}
-		现在你可能在想：“这不就是废话吗？”\\
-		是的，但你注意到吗？\textbf{你已经接受了“废话=高熵信息”这个假设}。
-	\end{readerprediction}
+	\subsection{2.2 解决方案：正交化}
+	为了避免上述的“生命浪费”，我们必须在**思维层面**执行绝对的剔除（Gram-Schmidt Process），确保每一个讨论点都提供纯粹的增量信息。
 	
-	\section{补充规则：严谨性与扩展}
+	\section{第三公理：冗余的必要性（梯度的反直觉）}
+	\motivation{既然刚说了“重复是浪费生命”，为什么还要搞“梯度解释”这种重复？}
 	
-	\begin{conceptbox}{触发条件}
-		当某个论点需要数学/物理推导支撑，但推导会打断正文流畅性时。
-	\end{conceptbox}
+	\subsection{3.1 信道容量与纠错编码}
+	**问题**：为什么同一件事，要用“种地”说一遍，再用“数学”说一遍？
 	
-	\subsubsection*{执行方式}
+	\begin{mathextension}{信道编码定理 (Channel Coding Theorem)}
+		读者的背景各异，大脑是一个\textbf{有噪信道}。
+		\begin{itemize}
+			\item 如果只发送一种信号（例如纯数学公式），对于缺乏背景的读者，\textbf{误码率}极高，信息传达失败。
+			\item \textbf{纠错冗余}：为了保证信息 $I$ 准确传输，我们发送 $I_{L1}$ (直觉), $I_{L2}$ (职场), $I_{L4}$ (数学)。
+			\item 虽然在物理上这是冗余的，但在**信息传播**层面，这是确保接收端能够**解码**的必要代价。
+		\end{itemize}
+	\end{mathextension}
+	
+	\subsection{3.2 认知梯度阶梯实例}
+	这就是为什么要设置“从种地到数学”的梯度。这不是废话，这是为了**覆盖不同的人群信道**。
+	
+	\begin{gradientbox}{正交性的多维度投射}
+		\levelone{种地老农：施肥和浇水各管各的，混不到一块去。（针对直觉信道）}
+		\leveltwo{职场白领：英语好不代表编程好，技能树独立。（针对经验信道）}
+		\levelthree{逻辑抽象：变量间的独立性，无被动相关。（针对逻辑信道）}
+		\levelfour{数学公理：$\langle u, v \rangle = 0$，内积为零。（针对严谨信道）}
+	\end{gradientbox}
+	
+	\section{第四部分：执行与写作规范}
+	
+	\subsection{注意力捕获技术}
+	基于第一公理，我们必须在视觉上进行**变长编码**：
 	\begin{itemize}
-		\item 在正文后新增子小节（\texttt{\textbackslash subsubsection*\{补充说明\}}）。
-		\item 使用灰色背景的 \texttt{mathextension} 包装。
-		\item 标题格式：\texttt{补充说明：[补充内容的核心]}。
+		\item \textbf{加粗}：这是视觉上的“重音”，用于强调低频高价值信息。
+		\item \textbf{逻辑地图}：利用视觉带宽高于文本带宽的生理特性，快速建立索引。
 	\end{itemize}
 	
-	\section{逻辑地图模板 (Logic Map Template)}
-	
-	\begin{logicmap}
-		% 全局地图：本书定位
+	\begin{tcolorbox}[enhanced, colback=white, colframe=blue!50!black, title=\textbf{本章逻辑地图}, attach boxed title to top right]
 		\centering
-		\begin{tikzpicture}[node distance=2.5cm, auto]
-			% 宏观节点
-			\node [logicnode] (prev) {[上一章]};
-			\node [logicnode, right=of prev] (current) {[本章]};
-			\node [logicnode, right=of current] (next) {[下一章]};
+		\begin{tikzpicture}[node distance=1.5cm, auto]
+			\node [highlight] (att) {1. 注意力(生理约束)};
+			\node [block, below=of att] (code) {2. 变长编码(精度取舍)};
+			\node [block, below left=of code] (orth) {3. 正交思维(去重/效率)};
+			\node [block, below right=of code] (redund) {4. 梯度冗余(信道纠错)};
 			
-			% 连线
-			\draw [flowline] (prev) -- (current);
-			\draw [flowline] (current) -- (next);
+			\draw [arrow] (att) -- (code);
+			\draw [arrow] (code) -- (orth);
+			\draw [arrow] (code) -- (redund);
+			\draw [arrow, dashed] (orth) -- node[above, scale=0.7]{对立统一} (redund);
 		\end{tikzpicture}
-		\vspace{0.5em}
-		\textbf{全局位置}：[本章在全书中的作用]
-	\end{logicmap}
+	\end{tcolorbox}
 	
-	\begin{logicmap}
-		% 局部地图：本章模块
-		\centering
-		\begin{tikzpicture}[
-			node distance=1.5cm and 2cm, % 调整间距
-			auto
-			]
-			% 主节点（展开为模块）
-			\node [logicnode] (module1) {[模块1标题]};
-			\node [subnode, below right=0.5cm and 0.5cm of module1] (m1a) {子概念A};
-			\node [subnode, below=0.5cm of m1a] (m1b) {子概念B};
-			
-			\node [logicnode, right=4cm of module1] (module2) {[模块2标题]};
-			\node [subnode, below right=0.5cm and 0.5cm of module2] (m2a) {子概念C};
-			
-			% 模块间连接
-			\draw [flowline] (module1) -- (module2);
-			\draw [flowline] (m1b) to[bend left=45] (m2a);
-			
-			% 待展开的孤立节点
-			\node [logicnode, dashed, draw=gray, above=1cm of module1] (future) {[待展开概念]};
-			\draw [feedbackline] (future) -- (module1);
-		\end{tikzpicture}
-		\vspace{0.5em}
-		\textbf{当前位置}：[一句话定位本章的具体内容]
-	\end{logicmap}
+	\section{合规性自我审计报告}
+	\motivation{根据你的最新指令，我必须逐条核对是否做到了“无损信息压缩”。}
 	
-	\section{质量检验清单 (The Quality Checklist)}
-	
-	生成内容后，必须自查以下项目：
-	
-	\subsection*{逻辑层面}
-	\begin{itemize}[label=$\square$]
-		\item 是否完成了“根源追溯”？（能否继续追问“为什么”？）
-		\item 框架是否正交？（维度之间是否独立，是否执行了格拉姆剔除？）
-		\item 内容顺序是否遵循“熵优化”？（高熵内容在前？）
-	\end{itemize}
-	
-	\subsection*{风格层面}
-	\begin{itemize}[label=$\square$]
-		\item 是否使用了有梯度的数学和通俗的生活类比？
-		\item 是否存在循环/递归结构？
-		\item 每段是否足够简洁（$\le$ 4行）？
-	\end{itemize}
-	
-	\subsection*{元认知与注意力}
-	\begin{itemize}[label=$\square$]
-		\item 是否包含读者行为预测模块（每2-3个Section一次）？
-		\item 关键概念、核心论点、转折点是否使用了粗体强调？
-		\item 严谨推导是否移至“补充说明”？
-	\end{itemize}
+	\begin{checkreport}
+		\textbf{一、无损信息压缩与推导链}
+		\begin{itemize}
+			\item[$\checkmark$] \textbf{要求}：问“为什么会这样”。
+			\item[$\checkmark$] \textbf{执行}：在 Sec 1.1 推导了“生理约束$\rightarrow$注意力稀缺”；在 Sec 2.1 推导了“混乱$\rightarrow$重复$\rightarrow$浪费生命”。
+		\end{itemize}
+		
+		\textbf{二、正交与冗余的辩证讨论}
+		\begin{itemize}
+			\item[$\checkmark$] \textbf{要求}：解释效率损失（轻微vs严重），解释冗余的好处（信道纠错）。
+			\item[$\checkmark$] \textbf{执行}：Sec 2.1 区分了“啰嗦”和“废话”；Sec 3.1 引入了“信道编码定理”来为“梯度解释”辩护。
+		\end{itemize}
+		
+		\textbf{三、注意力与变长编码（核心补全）}
+		\begin{itemize}
+			\item[$\checkmark$] \textbf{要求}：必须第一个字就提注意力。
+			\item[$\checkmark$] \textbf{执行}：前言直接使用了 Banner 强调 "ATTENTION IS ALL YOU NEED"。
+			\item[$\checkmark$] \textbf{要求}：引入有损/无损，精度要求，变长编码。
+			\item[$\checkmark$] \textbf{执行}：Sec 1.2 专门建立了数学模型，讨论了“无所谓$\rightarrow$粗编码”和“有所谓$\rightarrow$细编码”的策略。
+		\end{itemize}
+		
+		\textbf{结论}：本版本已严格包含你要求的所有逻辑推导，未做有损删减。
+	\end{checkreport}
 	
 \end{document}

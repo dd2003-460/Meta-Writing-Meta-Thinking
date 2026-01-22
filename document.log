@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.7.4)  22 JAN 2026 23:30
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.7.4)  23 JAN 2026 00:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,21 +6,34 @@ entering extended mode
 (document.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-06-09>
-(D:\Miktex\tex/latex/ctex\ctexart.cls
-(D:\Miktex\tex/latex/ctex/config\ctexbackend.cfg
-File: ctexbackend.cfg 2022/07/14 v2.5.10 Backend configuration file (CTEX)
+(D:\Miktex\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(D:\Miktex\tex/latex/base\size11.clo
+File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
+\c@part=\count271
+\c@section=\count272
+\c@subsection=\count273
+\c@subsubsection=\count274
+\c@paragraph=\count275
+\c@subparagraph=\count276
+\c@figure=\count277
+\c@table=\count278
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+) (D:\Miktex\tex/latex/ctex\ctex.sty
 (D:\Miktex\tex/latex/l3kernel\expl3.sty
 Package: expl3 2025-06-09 L3 programming layer (loader) 
 
 (D:\Miktex\tex/latex/l3backend\l3backend-xetex.def
 File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
-\g__graphics_track_int=\count271
-\g__pdfannot_backend_int=\count272
-\g__pdfannot_backend_link_int=\count273
+\g__graphics_track_int=\count279
+\g__pdfannot_backend_int=\count280
+\g__pdfannot_backend_link_int=\count281
 ))
-Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (C
-TEX)
+Package: ctex 2022/07/14 v2.5.10 Chinese adapter in LaTeX (CTEX)
+
 (D:\Miktex\tex/latex/ctex\ctexhook.sty
 Package: ctexhook 2022/07/14 v2.5.10 Document and package hooks (CTEX)
 ) (D:\Miktex\tex/latex/ctex\ctexpatch.sty
@@ -285,31 +298,14 @@ put line 193.
 LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on inpu
 t line 194.
 ))
-\l__ctex_tmp_int=\count274
+\l__ctex_tmp_int=\count282
 \l__ctex_tmp_box=\box53
-\l__ctex_tmp_dim=\dimen148
-\g__ctex_section_depth_int=\count275
-\g__ctex_font_size_int=\count276
+\l__ctex_tmp_dim=\dimen149
+\g__ctex_section_depth_int=\count283
+\g__ctex_font_size_int=\count284
 
 (D:\Miktex\tex/latex/ctex/config\ctexopts.cfg
 File: ctexopts.cfg 2022/07/14 v2.5.10 Option configuration file (CTEX)
-)
-(D:\Miktex\tex/latex/base\article.cls
-Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-(D:\Miktex\tex/latex/base\size11.clo
-File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
-)
-\c@part=\count277
-\c@section=\count278
-\c@subsection=\count279
-\c@subsubsection=\count280
-\c@paragraph=\count281
-\c@subparagraph=\count282
-\c@figure=\count283
-\c@table=\count284
-\abovecaptionskip=\skip49
-\belowcaptionskip=\skip50
-\bibindent=\dimen149
 )
 (D:\Miktex\tex/latex/ctex/engine\ctex-engine-xetex.def
 File: ctex-engine-xetex.def 2022/07/14 v2.5.10 XeLaTeX adapter (CTEX)
@@ -425,15 +421,9 @@ Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
 (D:\Miktex\tex/latex/zhnumber\zhnumber-utf8.cfg
 File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
 ))
-\l__ctex_heading_skip=\skip59
-
-(D:\Miktex\tex/latex/ctex/scheme\ctex-scheme-chinese-article.def
-File: ctex-scheme-chinese-article.def 2022/07/14 v2.5.10 Chinese scheme for art
-icle (CTEX)
-
-(D:\Miktex\tex/latex/ctex/config\ctex-name-utf8.cfg
-File: ctex-name-utf8.cfg 2022/07/14 v2.5.10 Caption with encoding UTF-8 (CTEX)
-))
+(D:\Miktex\tex/latex/ctex/scheme\ctex-scheme-plain.def
+File: ctex-scheme-plain.def 2022/07/14 v2.5.10 Plain scheme for generic (CTEX)
+)
 (D:\Miktex\tex/latex/ctex/fontset\ctex-fontset-windows.def
 File: ctex-fontset-windows.def 2022/07/14 v2.5.10 Windows fonts definition (CTE
 X)
@@ -472,9 +462,6 @@ Package fontspec Info:
 (D:\Miktex\tex/latex/ctex/config\ctex.cfg
 File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
 )
-(D:\Miktex\tex/generic/iftex\iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
-)
 (D:\Miktex\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
@@ -484,7 +471,9 @@ Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 )
 (D:\Miktex\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-)
+ (D:\Miktex\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
 \Gm@cnth=\count310
 \Gm@cntv=\count311
 \c@Gm@tempcnt=\count312
@@ -497,11 +486,10 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen188
 \Gm@layoutvoffset=\dimen189
 \Gm@dimlist=\toks18
-
-(D:\Miktex\tex/latex/geometry\geometry.cfg))
+ (D:\Miktex\tex/latex/geometry\geometry.cfg))
 (D:\Miktex\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/06/16 v2.17y AMS math features
-\@mathmargin=\skip60
+\@mathmargin=\skip59
 
 For additional information on amsmath, use the `?' option.
 (D:\Miktex\tex/latex/amsmath\amstext.sty
@@ -561,8 +549,8 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \totwidth@=\dimen197
 \lineht@=\dimen198
 \@envbody=\toks22
-\multlinegap=\skip61
-\multlinetaggap=\skip62
+\multlinegap=\skip60
+\multlinetaggap=\skip61
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2949.
 LaTeX Info: Redefining \] on input line 2950.
@@ -585,9 +573,9 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headfont=\toks26
 \thm@notefont=\toks27
 \thm@headpunct=\toks28
-\thm@preskip=\skip63
-\thm@postskip=\skip64
-\thm@headsep=\skip65
+\thm@preskip=\skip62
+\thm@postskip=\skip63
+\thm@headsep=\skip64
 \dth@everypar=\toks29
 ) (D:\Miktex\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
@@ -732,11 +720,11 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip66
+\Hy@SectionHShift=\skip65
 )
 (D:\Miktex\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip67
+\labelindent=\skip66
 \enit@outerparindent=\dimen259
 \enit@toks=\toks30
 \enit@inbox=\box59
@@ -746,20 +734,20 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 (D:\Miktex\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
-\f@nch@headwidth=\skip68
-\f@nch@offset@elh=\skip69
-\f@nch@offset@erh=\skip70
-\f@nch@offset@olh=\skip71
-\f@nch@offset@orh=\skip72
-\f@nch@offset@elf=\skip73
-\f@nch@offset@erf=\skip74
-\f@nch@offset@olf=\skip75
-\f@nch@offset@orf=\skip76
-\f@nch@height=\skip77
-\f@nch@footalignment=\skip78
-\f@nch@widthL=\skip79
-\f@nch@widthC=\skip80
-\f@nch@widthR=\skip81
+\f@nch@headwidth=\skip67
+\f@nch@offset@elh=\skip68
+\f@nch@offset@erh=\skip69
+\f@nch@offset@olh=\skip70
+\f@nch@offset@orh=\skip71
+\f@nch@offset@elf=\skip72
+\f@nch@offset@erf=\skip73
+\f@nch@offset@olf=\skip74
+\f@nch@offset@orf=\skip75
+\f@nch@height=\skip76
+\f@nch@footalignment=\skip77
+\f@nch@widthL=\skip78
+\f@nch@widthC=\skip79
+\f@nch@widthR=\skip80
 \@temptokenb=\toks31
 )
 (D:\Miktex\tex/latex/tcolorbox\tcolorbox.sty
@@ -1168,36 +1156,29 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (D:\Miktex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.te
 x
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-(D:\Miktex\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypatterns.cod
-e.tex
-File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (D:\Miktex\tex/generic/pgf/libraries\pgflibrarypatterns.code.tex
-File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
-No file document.aux.
+) (document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -1205,57 +1186,58 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 120.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 120.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 120.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 120.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 120.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 120.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 120.
-LaTeX Font Info:    Redeclaring math accent \check on input line 120.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 120.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 120.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 120.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 120.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 101.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 101.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 101.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 101.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 101.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 101.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 101.
+LaTeX Font Info:    Redeclaring math accent \check on input line 101.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 101.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 101.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 101.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 101.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 101.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 120.
+(Font)              `operators' in the math version `normal' on input line 101.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 120.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 101.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 120.
+(Font)              `operators' in the math version `bold' on input line 101.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 120.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 101.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 120.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 120.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 120.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 120.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 120.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 101.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 120.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 120.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 120.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 120.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 101.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1290,32 +1272,26 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 120.
+Package hyperref Info: Link coloring OFF on input line 101.
+(document.out) (document.out)
 \@outlinefile=\write4
 \openout4 = `document.out'.
 
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 123
+LaTeX Font Info:    Trying to load font information for U+msa on input line 104
 .
-(D:\Miktex\tex/latex/amsfonts\umsa.fd
+ (D:\Miktex\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 123
+LaTeX Font Info:    Trying to load font information for U+msb on input line 104
 .
- (D:\Miktex\tex/latex/amsfonts\umsb.fd
+
+(D:\Miktex\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-No file document.toc.
-\tf@toc=\write5
-\openout5 = `document.toc'.
 
+LaTeX Font Warning: Font shape `TU/SimSun(0)/b/it' undefined
+(Font)              using `TU/SimSun(0)/b/n' instead on input line 116.
 
-
-[1
-
-]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "Microsoft YaHei Bold/I" (it
@@ -1344,106 +1320,20 @@ Package fontspec Info:
 
 
 
-[2]
+[1
 
-LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.95> not availabl
-e
-(Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 
-213.
+]
+
+[2]
+Overfull \hbox (5.62274pt too wide) in paragraph at lines 211--212
+ [][] 
+ []
+
+
+
 [3]
 
-[4]
-
-LaTeX Font Warning: Font shape `TU/SimSun(0)/b/it' undefined
-(Font)              using `TU/SimSun(0)/b/n' instead on input line 301.
-
-
-
-[5]
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "FangSong/BI" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "FangSong/B" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "FangSong/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: 
-(fontspec)             Font family 'FangSong(0)' created for font 'FangSong'
-(fontspec)             with options [Script={CJK}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
-
-
-
-! LaTeX Error: Environment logicmap undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.321 ^^I\begin{logicmap}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: \begin{document} ended by \end{logicmap}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.336 ^^I\end{logicmap}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Environment logicmap undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.338 ^^I\begin{logicmap}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: \begin{document} ended by \end{logicmap}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.363 ^^I\end{logicmap}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-
-[6]
-
-[7] (document.aux)
+[4] (document.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -1452,22 +1342,16 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-Package rerunfilecheck Warning: File `document.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `document.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  05C81422FF3686460B53F04D1C8806C8;2802.
+Package rerunfilecheck Info: File `document.out' has not changed.
+(rerunfilecheck)             Checksum: 3BAB08D4E1916A7A5FBB6CA9C2888C2F;1879.
  ) 
 Here is how much of TeX's memory you used:
- 33663 strings out of 403337
- 768590 string characters out of 5470285
- 1243651 words of memory out of 5000000
- 61499 multiletter control sequences out of 15000+600000
- 635444 words of font info for 120 fonts, out of 8000000 for 9000
+ 32794 strings out of 403337
+ 742383 string characters out of 5470285
+ 1230039 words of memory out of 5000000
+ 60653 multiletter control sequences out of 15000+600000
+ 635451 words of font info for 111 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 116i,6n,121p,1175b,1236s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,9n,121p,547b,1236s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on document.pdf (7 pages).
+Output written on document.pdf (4 pages).
