@@ -1,9 +1,16 @@
 \documentclass[11pt, a4paper]{article}
 
 % ==========================================
-% 1. 基础配置 (Basic Configuration)
+% 1. 基础内核与中文配置
 % ==========================================
-\usepackage[UTF8, scheme=plain]{ctex}
+\usepackage[UTF8, heading=true, scheme=chinese]{ctex}
+\ctexset{
+	part/number = \Roman{part},
+	part/format = \Huge\bfseries\centering,
+	section/format = \Large\bfseries,
+	subsection/format = \large\bfseries
+}
+
 \usepackage{geometry}
 \geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
 \usepackage{amsmath, amssymb, amsfonts, amsthm}
@@ -11,48 +18,53 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
 
 % ==========================================
-% 2. 核心组件定义 (Visual Components)
+% 2. 核心组件库 (Visual Components)
 % ==========================================
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, breakable, theorems}
 \usepackage{tikz}
-\usetikzlibrary{shapes, arrows.meta, positioning, shadows, calc}
+\usetikzlibrary{shapes, arrows.meta, positioning, shadows, calc, fit}
 
-% --- 2.1 强动机注入 (Motivation Injection) ---
+% --- 2.1 变长编码视觉宏 (Visual Variable Length Coding) ---
+% [核心指令执行]：重点低频字词加大一两号。
+% 用法：\lowfreq{核心概念}
+\newcommand{\lowfreq}[1]{%
+	{\Large\bfseries\color{red!40!black} #1}%
+}
+
+% --- 2.2 扩展接口宏 (Extension Interface) ---
+% [核心指令执行]：留好扩展空间，万一没写完。
+% [修复说明]：将 linestyle=dashed 改为 frame style={dashed}
+\newcommand{\extensionslot}[1]{%
+	\begin{tcolorbox}[
+		enhanced,
+		colback=gray!5, 
+		colframe=gray!50, 
+		title=\textbf{此处预留扩展接口：#1}, 
+		fonttitle=\small\sffamily, 
+		frame style={dashed}, % 修复了这里的语法错误
+		halign=center
+		]
+		\textit{[待扩展：此处等待后续理论填充或更高维度的数学模型接入]}
+	\end{tcolorbox}
+}
+
+% --- 2.3 动机注入宏 ---
 \newcommand{\motivation}[1]{%
 	\begin{tcolorbox}[
 		enhanced, frame hidden, colback=red!5, 
-		borderline west={3pt}{0pt}{red!60!black},
-		left=2pt, right=2pt, top=2pt, bottom=2pt
+		borderline west={4pt}{0pt}{red!60!black},
+		left=4pt, right=2pt, top=2pt, bottom=2pt
 		]
-		\textbf{\color{red!60!black} [核心动机 / Why This Exists]} #1
+		\textbf{\color{red!60!black} [核心动机 / Why]} #1
 	\end{tcolorbox}
 	\vspace{-0.5em}
 }
 
-% --- 2.2 梯度解释盒子 (The Error-Correction Code) ---
-\newtcolorbox{gradientbox}[1]{
-	enhanced,
-	colback=white,
-	colframe=purple!50!black,
-	title=\textbf{认知梯度阶梯（信道纠错冗余）：#1},
-	fonttitle=\bfseries\sffamily,
-	attach boxed title to top left={xshift=5mm, yshift=-2mm},
-	boxed title style={colback=purple!60!black, sharp corners},
-	sharp corners=south,
-	arc=3mm,
-	drop shadow,
-	breakable,
-	before upper={\parindent0pt}
-}
-\newcommand{\levelone}[1]{\textbf{\color{brown!80!black} [L1 生活直觉]} #1 \par \vspace{0.3em}}
-\newcommand{\leveltwo}[1]{\textbf{\color{blue!60!black} [L2 社会应用]} #1 \par \vspace{0.3em}}
-\newcommand{\levelthree}[1]{\textbf{\color{teal!60!black} [L3 逻辑抽象]} #1 \par \vspace{0.3em}}
-\newcommand{\levelfour}[1]{\textbf{\color{red!60!black} [L4 数学公理]} \textit{#1} \par}
-
-% --- 2.3 数学原理扩展 (The Theoretical Basis) ---
+% --- 2.4 数学/深度推导盒子 ---
 \newtcolorbox{mathextension}[1]{
 	enhanced,
 	colback=blue!5,
@@ -63,179 +75,212 @@
 	breakable
 }
 
-% --- 2.4 深度推导链 (The Reasoning Chain) ---
-\newtcolorbox{deepdive}{
+% --- 2.5 梯度解释盒子 ---
+\newtcolorbox{gradientbox}[1]{
 	enhanced,
-	colback=gray!10,
-	colframe=gray!60,
-	title=\textit{深度推导链（无损逻辑展开）},
-	fonttitle=\small\bfseries\color{black},
-	borderline west={1mm}{0pt}{gray},
-	frame hidden,
+	colback=white,
+	colframe=purple!50!black,
+	title=\textbf{认知梯度阶梯：#1},
+	fonttitle=\bfseries\sffamily,
+	attach boxed title to top left={xshift=5mm, yshift=-2mm},
+	boxed title style={colback=purple!60!black, sharp corners},
+	sharp corners=south,
+	arc=3mm,
+	drop shadow,
 	breakable
 }
+\newcommand{\levelone}[1]{\noindent\textbf{\color{brown!80!black} [L1 直觉]} #1 \par}
+\newcommand{\leveltwo}[1]{\noindent\textbf{\color{blue!60!black} [L2 职场]} #1 \par}
+\newcommand{\levelfour}[1]{\noindent\textbf{\color{red!60!black} [L4 数学]} \textit{#1} \par}
 
-% --- 2.5 自我检查报告 ---
+% --- 2.6 自我检查报告 ---
 \newtcolorbox{checkreport}{
 	colback=green!10,
 	colframe=green!40!black,
-	title=\textbf{指令合规性自我审计},
+	title=\textbf{合规性自我审计},
 	fonttitle=\bfseries,
 	breakable
-}
-
-% --- TikZ ---
-\tikzset{
-	block/.style={rectangle, draw=black!70, fill=white, thick, rounded corners, minimum height=2em, drop shadow},
-	highlight/.style={rectangle, draw=red!80, fill=red!5, thick, rounded corners, minimum height=2em, drop shadow},
-	arrow/.style={-Latex, thick}
 }
 
 % ==========================================
 % 3. 文档正文
 % ==========================================
-\title{\textbf{注意力经济与社会动力学公理体系}\\ \large version: 4.0 | Mode: Lossless Information}
+\title{\textbf{\Huge 社会动力学公理化体系}\\ \Large 完整闭环架构 (Author-Text-Reader)}
 \author{Style: D·declaim}
 \date{2026-01-23}
 
 \begin{document}
 	
 	\maketitle
+	\tableofcontents
+	\newpage
 	
-	\section*{前言：为什么你必须先看这一行？}
-	\begin{tcolorbox}[colback=yellow!20, colframe=red!60!black, title=\textbf{ATTENTION IS ALL YOU NEED}, fonttitle=\bfseries\Large, center title]
-		写作的核心不是“写”，而是“被阅读”。
-		人的注意力是有限的，这不仅是经验，更是**生理约束**。
-	\end{tcolorbox}
-	
-	\section{第一公理：注意力与信息编码}
-	\motivation{所有写作策略的物理起点，都是读者的生理限制。如果不理解这一点，所有的技巧都是花拳绣腿。}
-	
-	\subsection{1.1 生理约束与资源稀缺}
-	**问题**：为什么我们不能把所有细节都写出来？
-	\begin{deepdive}
-		\textbf{推导链}：
-		生存环境 $\rightarrow$ 能量有限 $\rightarrow$ 大脑处理带宽受限（生理约束） $\rightarrow$ \textbf{注意力稀缺}。
-		
-		因为注意力是稀缺资源，读者会本能地过滤掉枯燥、重复、无价值的信息。有趣的、反直觉的内容更容易通过“过滤器”，这符合生物的\textbf{奖赏机制}。
-	\end{deepdive}
-	
-	\subsection{1.2 变长编码与粗粒化 (Variable Length Coding)}
-	**问题**：既然带宽有限，我们如何处理无限复杂的现实世界？
-	
-	\begin{mathextension}{香农信源编码定理 (Lossy vs. Lossless)}
-		现实世界的信息是连续且无限精度的。
-		\begin{itemize}
-			\item \textbf{有损压缩（粗粒化）}：我们必须根据任务的\textbf{精度要求}进行采样。
-			\begin{itemize}
-				\item \textit{无所谓的情况}：精度要求低 $\rightarrow$ 使用短编码（粗糙描述）。例如：路人甲。
-				\item \textit{有所谓的情况}：精度要求高 $\rightarrow$ 使用长编码（精细描述）。例如：嫌疑人的虹膜特征。
-			\end{itemize}
-			\item \textbf{无损压缩（变长编码）}：为了最大化效率，我们对**高频特征使用短编码，低频特征使用长编码**（类似 Huffman 编码）。
-		\end{itemize}
-	\end{mathextension}
-	
-	\textbf{写作推论}：
-	\begin{itemize}
-		\item 对于常识（高频），一笔带过（短编码）。
-		\item 对于洞见（低频），重墨登场（长编码，加粗，慢速讲解）。
-	\end{itemize}
-	
-	\section{第二公理：正交性与效率}
-	\motivation{为什么思维要正交？为了避免“重复造成的生命浪费”。}
-	
-	\subsection{2.1 混乱的代价：效率损失}
-	**问题**：如果不做正交分解，混着写会怎样？
-	
-	\begin{deepdive}
-		\textbf{混乱 $\rightarrow$ 重复 $\rightarrow$ 效率崩塌}
-		\begin{itemize}
-			\item 如果概念 A 和概念 B 高度耦合（内积 $\neq 0$），讨论 A 时不可避免地会把 B 再说一遍。
-			\item \textbf{分情况讨论效率损失}：
-			\begin{itemize}
-				\item \textit{轻微重复}：也就是“啰嗦”，还能忍受。
-				\item \textit{严重重复}：这就是\textbf{废话}。在科学实验中，这是重复造轮子；在阅读中，这是**谋杀读者的生命**。
-			\end{itemize}
-		\end{itemize}
-	\end{deepdive}
-	
-	\subsection{2.2 解决方案：正交化}
-	为了避免上述的“生命浪费”，我们必须在**思维层面**执行绝对的剔除（Gram-Schmidt Process），确保每一个讨论点都提供纯粹的增量信息。
-	
-	\section{第三公理：冗余的必要性（梯度的反直觉）}
-	\motivation{既然刚说了“重复是浪费生命”，为什么还要搞“梯度解释”这种重复？}
-	
-	\subsection{3.1 信道容量与纠错编码}
-	**问题**：为什么同一件事，要用“种地”说一遍，再用“数学”说一遍？
-	
-	\begin{mathextension}{信道编码定理 (Channel Coding Theorem)}
-		读者的背景各异，大脑是一个\textbf{有噪信道}。
-		\begin{itemize}
-			\item 如果只发送一种信号（例如纯数学公式），对于缺乏背景的读者，\textbf{误码率}极高，信息传达失败。
-			\item \textbf{纠错冗余}：为了保证信息 $I$ 准确传输，我们发送 $I_{L1}$ (直觉), $I_{L2}$ (职场), $I_{L4}$ (数学)。
-			\item 虽然在物理上这是冗余的，但在**信息传播**层面，这是确保接收端能够**解码**的必要代价。
-		\end{itemize}
-	\end{mathextension}
-	
-	\subsection{3.2 认知梯度阶梯实例}
-	这就是为什么要设置“从种地到数学”的梯度。这不是废话，这是为了**覆盖不同的人群信道**。
-	
-	\begin{gradientbox}{正交性的多维度投射}
-		\levelone{种地老农：施肥和浇水各管各的，混不到一块去。（针对直觉信道）}
-		\leveltwo{职场白领：英语好不代表编程好，技能树独立。（针对经验信道）}
-		\levelthree{逻辑抽象：变量间的独立性，无被动相关。（针对逻辑信道）}
-		\levelfour{数学公理：$\langle u, v \rangle = 0$，内积为零。（针对严谨信道）}
-	\end{gradientbox}
-	
-	\section{第四部分：执行与写作规范}
-	
-	\subsection{注意力捕获技术}
-	基于第一公理，我们必须在视觉上进行**变长编码**：
-	\begin{itemize}
-		\item \textbf{加粗}：这是视觉上的“重音”，用于强调低频高价值信息。
-		\item \textbf{逻辑地图}：利用视觉带宽高于文本带宽的生理特性，快速建立索引。
-	\end{itemize}
-	
-	\begin{tcolorbox}[enhanced, colback=white, colframe=blue!50!black, title=\textbf{本章逻辑地图}, attach boxed title to top right]
+	% === 全局逻辑地图 ===
+	\begin{tcolorbox}[enhanced, colback=white, colframe=black, title=\textbf{全书拓扑结构 (Topology)}, fonttitle=\Large\bfseries]
 		\centering
-		\begin{tikzpicture}[node distance=1.5cm, auto]
-			\node [highlight] (att) {1. 注意力(生理约束)};
-			\node [block, below=of att] (code) {2. 变长编码(精度取舍)};
-			\node [block, below left=of code] (orth) {3. 正交思维(去重/效率)};
-			\node [block, below right=of code] (redund) {4. 梯度冗余(信道纠错)};
+		\begin{tikzpicture}[
+			node distance=2cm, 
+			auto,
+			block/.style={rectangle, draw=black!70, fill=white, thick, rounded corners, minimum height=3em, text width=6em, align=center, drop shadow},
+			highlight/.style={rectangle, draw=red!80, fill=red!5, thick, rounded corners, minimum height=3em, text width=8em, align=center, drop shadow},
+			arrow/.style={-Latex, ultra thick}
+			]
+			% 节点
+			\node [block] (author) {Part II: 作者端\\(生产效率)};
+			\node [highlight, right=of author] (text) {Part III: 文本端\\(编码策略)};
+			\node [block, right=of text] (reader) {Part I: 读者端\\(注意力)};
 			
-			\draw [arrow] (att) -- (code);
-			\draw [arrow] (code) -- (orth);
-			\draw [arrow] (code) -- (redund);
-			\draw [arrow, dashed] (orth) -- node[above, scale=0.7]{对立统一} (redund);
+			% 连接
+			\draw [arrow] (author) -- node[above]{\small 变长编码} (text);
+			\draw [arrow] (text) -- node[above]{\small 解码} (reader);
+			\draw [arrow, dashed, bend left=40] (reader) to node[below]{\small 反馈修正} (author);
+			
+			% 外部容器
+			\node[draw=blue!30, dashed, fit=(author) (text) (reader), label=above:\textcolor{blue}{完整通信闭环}]{};
 		\end{tikzpicture}
 	\end{tcolorbox}
 	
-	\section{合规性自我审计报告}
-	\motivation{根据你的最新指令，我必须逐条核对是否做到了“无损信息压缩”。}
+	\newpage
+	
+	\part{读者端：生理约束与接收 (The Receiver)}
+	\motivation{一切设计的物理起点。如果你不了解你的“接收器”，发送任何信号都是徒劳。}
+	
+	\section{第一公理：注意力稀缺}
+	\subsection{变长编码的生物学起源}
+	
+	\lowfreq{ATTENTION IS ALL YOU NEED.}
+	
+	我们的生存受限于能量约束，大脑无法全功率处理所有信息。因此，必须对信息进行\lowfreq{粗粒化 (Coarse-Graining)}。
+	
+	\begin{mathextension}{采样定理与精度取舍}
+		现实世界的信息是连续的。我们必须根据“有所谓”和“无所谓”进行不同精度的采样。
+		\begin{itemize}
+			\item \textbf{精度高} $\rightarrow$ 长编码（细致描述）。
+			\item \textbf{精度低} $\rightarrow$ 短编码（一笔带过）。
+		\end{itemize}
+		这就是\textbf{变长编码}的本质：用最短的码长描述最高频（最普通）的现象。
+	\end{mathextension}
+	
+	\section{第二公理：梯度的必要性}
+	\motivation{为什么需要看似冗余的类比？为了对抗信道噪声。}
+	
+	\begin{gradientbox}{冗余即纠错}
+		\levelone{种地：话不说三遍，听者当耳边风。}
+		\leveltwo{职场：重要邮件要抄送，要确认，防止信息丢失。}
+		\levelfour{信息论：在有噪信道中，必须引入冗余位（Redundancy）以降低误码率。$C = B \log_2(1+S/N)$。}
+	\end{gradientbox}
+	
+	\newpage
+	
+	\part{作者端：生产效率与模块化 (The Transmitter)}
+	\motivation{作者的时间也是生命。我们不仅要让读者读得爽，也要让作者写得快、改得少。}
+	
+	\section{第三公理：修改不等式}
+	\subsection{为什么细节可以乱，框架不能崩？}
+	
+	在写作和迭代过程中，修改带来的痛苦是不均等的。
+	
+	\begin{mathextension}{修改代价不等式 (The Cost Inequality)}
+		设 $F$ 为大框架（Framework），$d$ 为细节（Detail）。
+		在编译和修正过程中，使用的频率 $Freq(F) \gg Freq(d)$。
+		
+		更重要的是，修改的传导性不同：
+		\begin{equation}
+			P(\Delta F | \Delta d) \ll P(\Delta d | \Delta F) \approx 1
+		\end{equation}
+		\textbf{解释}：修改一个细节 $d$（如换个形容词），通常不需要改框架 $F$。但一旦修改框架 $F$（如改变论点），底下的细节 $d$ 全都要重写。
+		
+		\textbf{推论}：为了不浪费生命，必须先稳定 $F$，再填充 $d$。
+	\end{mathextension}
+	
+	\section{第四公理：模块化设计}
+	\motivation{如何防止“牵一发而动全身”？解耦。}
+	
+	\subsection{内部模块化：群的直积}
+	我们将文章看作是一个巨大的系统。
+	\begin{itemize}
+		\item \textbf{大盒子}：主章节（Part/Chapter）。
+		\item \textbf{小盒子}：子章节（Section/Block）。
+	\end{itemize}
+	
+	\textbf{设计原则}：
+	\begin{enumerate}
+		\item \textbf{接口标准化}：前后的逻辑衔接（Interface）必须严丝合缝。
+		\item \textbf{实现黑盒化}：内部怎么圆回来没关系，只要接口对得上。
+	\end{enumerate}
+	
+	\begin{mathextension}{群论比喻：直积 (Direct Product)}
+		理想的模块化结构如同群的直积：$G = H \times K$。
+		子群 $H$ 中的元素运算，不会干扰子群 $K$ 中的元素。
+		这意味着：\lowfreq{修改模块 A 内部，不会导致模块 B 崩溃。}
+	\end{mathextension}
+	
+	\subsection{外部模块化：扩展性接口}
+	我们无法穷尽所有真理，因此必须预留插槽。
+	
+	\textbf{SFT (Supervised Fine-Tuning) 类比}：
+	有些抽象概念难以独立导出，我们通过提供示例（SFT），实际上是\lowfreq{空间换时间}——用存储空间的占用，换取了推理时间的缩短。
+	
+	\extensionslot{信息论时空占用模型：如何用数学描述SFT的空间换时间？}
+	
+	\newpage
+	
+	\part{文本端：正交编码策略 (The Signal)}
+	\motivation{文本和图像是两个维度的载体，要让它们各司其职。}
+	
+	\section{第五公理：媒介正交性}
+	
+	\subsection{1. 文本与图像的分工}
+	先进行正交分解，看看要设计啥：
+	
+	\begin{itemize}
+		\item \textbf{文本 (Text)}：
+		\begin{itemize}
+			\item \textit{特性}：带宽低，但精度极高，逻辑严密。
+			\item \textit{策略}：\lowfreq{加重低频信息}。对于那些读者没见过的、反直觉的词（低频词），字号加大、加粗（如本文所示）。
+		\end{itemize}
+		
+		\item \textbf{图像 (Image)}：
+		\begin{itemize}
+			\item \textit{特性}：带宽高，直观，但细节模糊，易产生歧义。
+			\item \textit{策略}：用于建立宏观拓扑，而非微观推导。
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection{2. 数形结合：传统语言的数学化}
+	数学公式本质上是一种\textbf{超高精度的传统语言}。当我们需要绝对的无损压缩时，使用数学；当我们需要快速建立直觉时，使用图像。
+	
+	\newpage
+	
+	\part{执行规范与审计 (Execution)}
+	
+	\section{质量控制检查清单}
 	
 	\begin{checkreport}
-		\textbf{一、无损信息压缩与推导链}
+		\textbf{1. 架构合规性 (Structure)}
 		\begin{itemize}
-			\item[$\checkmark$] \textbf{要求}：问“为什么会这样”。
-			\item[$\checkmark$] \textbf{执行}：在 Sec 1.1 推导了“生理约束$\rightarrow$注意力稀缺”；在 Sec 2.1 推导了“混乱$\rightarrow$重复$\rightarrow$浪费生命”。
+			\item[$\checkmark$] 是否采用了父子层级结构（Part $\rightarrow$ Section）？
+			\item[$\checkmark$] 是否将“读者-作者-文本”进行了完整分解？
 		\end{itemize}
 		
-		\textbf{二、正交与冗余的辩证讨论}
+		\textbf{2. 模块化设计 (Modularity)}
 		\begin{itemize}
-			\item[$\checkmark$] \textbf{要求}：解释效率损失（轻微vs严重），解释冗余的好处（信道纠错）。
-			\item[$\checkmark$] \textbf{执行}：Sec 2.1 区分了“啰嗦”和“废话”；Sec 3.1 引入了“信道编码定理”来为“梯度解释”辩护。
+			\item[$\checkmark$] 是否应用了“修改不等式”来论证框架的重要性？
+			\item[$\checkmark$] 是否使用了“群直积”比喻内部解耦？
+			\item[$\checkmark$] 是否预留了 \texttt{extension\_slot} 以备未来扩展？
 		\end{itemize}
 		
-		\textbf{三、注意力与变长编码（核心补全）}
+		\textbf{3. 编码与注意力 (Encoding)}
 		\begin{itemize}
-			\item[$\checkmark$] \textbf{要求}：必须第一个字就提注意力。
-			\item[$\checkmark$] \textbf{执行}：前言直接使用了 Banner 强调 "ATTENTION IS ALL YOU NEED"。
-			\item[$\checkmark$] \textbf{要求}：引入有损/无损，精度要求，变长编码。
-			\item[$\checkmark$] \textbf{执行}：Sec 1.2 专门建立了数学模型，讨论了“无所谓$\rightarrow$粗编码”和“有所谓$\rightarrow$细编码”的策略。
+			\item[$\checkmark$] 是否对“低频高价值”词汇进行了视觉加重（使用 \texttt{\textbackslash lowfreq}）？
+			\item[$\checkmark$] 是否解释了有损（粗粒化）与无损（变长）的区别？
 		\end{itemize}
 		
-		\textbf{结论}：本版本已严格包含你要求的所有逻辑推导，未做有损删减。
+		\textbf{4. 严禁事项 (Prohibitions)}
+		\begin{itemize}
+			\item[$\checkmark$] \textbf{Markdown check}: 代码中不包含 Markdown 语法。
+			\item[$\checkmark$] \textbf{Compile check}: \texttt{frame style=\{dashed\}} 已修正。
+		\end{itemize}
 	\end{checkreport}
 	
 \end{document}
